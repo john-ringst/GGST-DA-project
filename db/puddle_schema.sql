@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS matches (
     opponent_character TEXT NOT NULL,
     opponent_character_short TEXT NOT NULL,
     opponent_rating_value INTEGER NOT NULL,
-    result_win BOOLEAN NOT NULL,
+    result_win INTEGER NOT NULL,
 )

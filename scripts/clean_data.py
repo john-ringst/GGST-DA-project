@@ -10,7 +10,7 @@ df = pd.DataFrame(match_history)
 # df.to_csv("data/processed/match_history.csv", index=False, encoding="utf-8")
 
 # columns to drop: floor (deprecated?), opponent platform (useless?), opponent id (useless for sure), opponent is legend (not relevant to me, only top 100 players)
+df["result_win"] = df["result_win"].astype(int) # convert boolean to int due to Sqlite convention (no BOOLEAN type)
 df = df.drop(columns=["floor", "opponent_platform", "opponent_id", "opponent_is_legend"])
 # print(df["result_win"].dtype)
-df["result_win"] = df["result_win"].astype(int) # convert boolean to int due to Sqlite convention (no BOOLEAN type)
 df.to_csv("data/processed/match_history_cleaned.csv", index=False, encoding="utf-8")
