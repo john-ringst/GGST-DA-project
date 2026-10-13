@@ -3,7 +3,6 @@ import sqlite3
 import pandas as pd
 
 COLUMNS = [
-    "match_id",
     "timestamp",
     "own_rating_value",
     "opponent_name",
@@ -13,7 +12,7 @@ COLUMNS = [
     "result_win",
 ]
 
-df = pd.read_csv("data/processed/match_history_cleaned.csv", encoding="utf-8")
+df = pd.read_csv("data/processed/match_history_cleaned.csv", encoding="utf-8", keep_default_na=False)
 connection = sqlite3.connect("db/puddle_analysis.db")
 
 with open("db/puddle_schema.sql", "r", encoding="utf-8") as file:
@@ -25,7 +24,7 @@ try:
         cursor = connection.executemany(
             f"""INSERT INTO matches ({", ".join(COLUMNS)})
             VALUES ({", ".join("?" * len(COLUMNS))})
-            ON CONFLICT(match_id) DO NOTHING""",
+            ON CONFLICT(timestamp) DO NOTHING""",
             df[COLUMNS].itertuples(index=False, name=None)
         )
         inserted = cursor.rowcount

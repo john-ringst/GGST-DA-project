@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS matches (
     match_id INTEGER PRIMARY KEY,
-    timestamp TEXT NOT NULL,
+    timestamp TEXT NOT NULL UNIQUE,
     own_rating_value INTEGER NOT NULL,
     opponent_name TEXT NOT NULL,
     opponent_character TEXT NOT NULL,
