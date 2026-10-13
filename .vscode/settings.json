@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "puddle",
+            "database": "${workspaceFolder:GGST DA project}/db/puddle_analysis.db"
+        }
+    ]
+}
